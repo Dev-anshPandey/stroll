@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:stroll/widget/bottomNavBar.dart';
+import 'package:stroll/widget/option_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -163,14 +165,36 @@ class HomeScreen extends StatelessWidget {
                   fontSize: height * 0.014,
                 )),
           ),
-          const Row(
-            children: [OptionCard(), OptionCard()],
+          Row(
+            children: [
+              OptionCard(
+                option: "A",
+                text: "The peace in the early mornings",
+                selected: false,
+              ),
+              OptionCard(
+                option: "B",
+                text: "The magical golder hours",
+                selected: false,
+              ),
+            ],
           ),
           SizedBox(
             height: height * 0.018,
           ),
-          const Row(
-            children: [OptionCard(), OptionCard()],
+          Row(
+            children: [
+              OptionCard(
+                option: "C",
+                text: "Wind-down time after dinners",
+                selected: false,
+              ),
+              OptionCard(
+                option: "D",
+                text: "The serenity past midnight",
+                selected: true,
+              ),
+            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -226,114 +250,8 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.black,
-          showUnselectedLabels: true,
-          unselectedFontSize: 4,
-          selectedFontSize: 4,
-          items: [
-            BottomNavigationBarItem(
-                backgroundColor: Colors.black,
-                icon: Image.asset(
-                  "assets/Card.jpg",
-                  height: height * 0.06,
-                ),
-                activeIcon: Image.asset(
-                  "assets/Card.jpg",
-                  // color: Color(0xff6F6E7C),
-                  height: height * 0.06,
-                ),
-                label: ''),
-            BottomNavigationBarItem(
-                backgroundColor: Colors.black,
-                icon: Image.asset(
-                  "assets/bonfire.jpg",
-                  height: height * 0.06,
-                ),
-                activeIcon: Image.asset(
-                  "assets/bonfire.jpg",
-                  height: height * 0.06,
-                ),
-                label: ''),
-            BottomNavigationBarItem(
-                backgroundColor: Colors.black,
-                icon: Image.asset(
-                  "assets/Chat.jpg",
-                  height: height * 0.06,
-                ),
-                activeIcon: Image.asset(
-                  "assets/Chat.jpg",
-                  height: height * 0.06,
-                ),
-                label: ''),
-            BottomNavigationBarItem(
-                backgroundColor: Colors.black,
-                icon: Image.asset(
-                  "assets/User.jpg",
-                  height: height * 0.06,
-                ),
-                activeIcon: Image.asset(
-                  "assets/User.jpg",
-                  height: height * 0.06,
-                ),
-                label: ''),
-          ]),
+      bottomNavigationBar: BottomNavBar(height: height),
     );
   }
 }
 
-class OptionCard extends StatelessWidget {
-  const OptionCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: EdgeInsets.only(left: width * 0.04),
-      child: Container(
-        width: width * 0.438,
-        decoration: const BoxDecoration(
-            color: Color(0xff232A2E),
-            borderRadius: BorderRadius.all(Radius.circular(15))),
-        child: Padding(
-          padding: EdgeInsets.only(
-              left: width * 0.02, top: height * 0.02, bottom: height * 0.02),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: height * 0.006),
-                child: CircleAvatar(
-                  radius: height * 0.016,
-                  backgroundColor: Colors.white,
-                  child: CircleAvatar(
-                    radius: height * 0.014,
-                    backgroundColor: Color(0xff232A2E),
-                    child: const Text(
-                      'A',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(top: height * 0.0, left: width * 0.019),
-                child: Container(
-                  width: width * 0.32,
-                  child: Text('The peace in the early mornings ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: height * 0.016,
-                      )),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
